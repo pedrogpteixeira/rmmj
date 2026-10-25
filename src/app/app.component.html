@@ -1,0 +1,122 @@
+<a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+<header class="site-header">
+  <a [href]="recruitmentPage ? '/' : '#inicio'" class="wordmark" (click)="closeMenu()" aria-label="RMMJ — voltar ao início"><span class="wordmark-symbol" aria-hidden="true"><i></i><i></i><i></i></span><span>RMMJ<small>Parceiro oficial Endesa</small></span></a>
+  <nav class="nav" id="main-nav" aria-label="Navegação principal" [class.open]="menuOpen()">
+    <a [href]="recruitmentPage ? '/#sobre' : '#sobre'" (click)="closeMenu()">Quem somos</a>
+    <a [href]="recruitmentPage ? '/#servicos' : '#servicos'" (click)="closeMenu()">Soluções</a>
+    <a [href]="recruitmentPage ? '/#presenca' : '#presenca'" (click)="closeMenu()">Equipas e presença</a>
+    <a [href]="recruitmentPage ? '/#como-funciona' : '#como-funciona'" (click)="closeMenu()">Como funciona</a>
+    <a routerLink="/recrutamento" (click)="closeMenu()">Recrutamento</a>
+    @if (recruitmentPage) {
+      <a routerLink="/recrutamento" fragment="candidatura" queryParamsHandling="preserve" class="mobile-action" (click)="closeMenu()">Candidatar-me <span aria-hidden="true">↗</span></a>
+    } @else {
+      <a href="#contacto" class="mobile-action" (click)="closeMenu()">Falar connosco <span aria-hidden="true">↗</span></a>
+    }
+  </nav>
+  @if (recruitmentPage) {
+    <a class="header-contact" routerLink="/recrutamento" fragment="candidatura" queryParamsHandling="preserve">Candidatar-me <span aria-hidden="true">↗</span></a>
+  } @else {
+    <a class="header-contact" href="#contacto">Pedir contacto <span aria-hidden="true">↗</span></a>
+  }
+  <button class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()" aria-controls="main-nav" [attr.aria-label]="menuOpen() ? 'Fechar menu' : 'Abrir menu'" (click)="menuOpen.set(!menuOpen())"><span></span><span></span></button>
+</header>
+<main id="conteudo">
+  @if (recruitmentPage) {
+    <rm-recruitment />
+  } @else {
+  <section class="hero hero-local" id="inicio" aria-labelledby="hero-title">
+    <div class="hero-local-copy">
+      <div class="hero-local-label"><span class="status-dot"></span> RMMJ · ENERGIA E PESSOAS <span>DESDE 2021</span></div>
+      <div class="hero-local-main">
+        <span class="super-label hero-endesa-context"><span class="hero-endesa-context-line" aria-hidden="true"></span> PARCEIRO OFICIAL ENDESA</span>
+        <h1 id="hero-title">Perto das pessoas.<br><span>Perto da energia.</span></h1>
+        <p>Na RMMJ, o setor energético faz-se de relações próximas. Como parceiro oficial Endesa, acompanhamos particulares e empresas nas suas necessidades de eletricidade e gás, com equipas em cinco cidades portuguesas.</p>
+        <div class="hero-local-actions"><a href="#servicos" class="btn btn-dark">Conhecer as soluções <span aria-hidden="true">↗</span></a><a class="quiet-link" href="#presenca">As nossas equipas <span aria-hidden="true">→</span></a></div>
+      </div>
+      <div class="hero-local-facts" aria-label="Informações sobre a RMMJ">
+        <div><strong>2021</strong><span>Início da atividade</span></div>
+        <div><strong>05</strong><span>Cidades com equipas</span></div>
+        <div><strong>02</strong><span>Mercados: particulares e empresas</span></div>
+      </div>
+    </div>
+    <div class="hero-local-panel hero-values-panel hero-endesa-panel" aria-label="RMMJ, parceiro oficial Endesa">
+      <div class="local-panel-top"><span>RMMJ / PARCERIA OFICIAL</span><span>ELETRICIDADE + GÁS</span></div>
+      <div class="values-panel-content hero-endesa-content">
+        <div class="hero-endesa-partner">
+          <span class="hero-endesa-partner-label"><span class="hero-endesa-partner-marker" aria-hidden="true"></span> A ENERGIA QUE NOS LIGA</span>
+          <strong class="hero-endesa-name">Endesa<span aria-hidden="true">.</span></strong>
+          <span class="hero-endesa-partner-role">PARCEIRO OFICIAL</span>
+        </div>
+        <h2>Energia para hoje.<br><em>Apoio para decidir.</em></h2>
+        <p>Uma ligação entre a experiência comercial da RMMJ e as soluções de energia da Endesa — com acompanhamento próximo, para pessoas e empresas.</p>
+        <div class="hero-endesa-topics" aria-label="Áreas de atuação">
+          <span>Eletricidade</span><span>Gás natural</span><span>Empresas</span>
+        </div>
+      </div>
+      <div class="local-panel-bottom"><span>RMMJ × ENDESA</span><a href="#servicos">EXPLORAR SOLUÇÕES <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+
+  <section class="about section-pad" id="sobre" aria-labelledby="about-title">
+    <div class="section-label" rmReveal><span class="label-line"></span> 01 — QUEM SOMOS</div>
+    <div class="about-layout"><div class="about-statement" rmReveal><h2 id="about-title">Antes de falar de números, <em>falamos de pessoas.</em></h2><div class="about-highlight" aria-hidden="true"><span>RMMJ</span><strong>Energia<br>com pessoas.</strong></div></div><div class="about-detail" rmReveal><p class="lead">Desde 2021, a RMMJ atua no setor energético com uma abordagem assente no acompanhamento próximo e na confiança.</p><p>Trabalhamos com clientes particulares e empresas. Valorizamos a preparação das nossas equipas e a capacidade de explicar soluções de energia de forma simples, transparente e acessível.</p><div class="about-facts"><div><strong>2021</strong><span>Início de atividade</span></div><div><strong>05</strong><span>Cidades com equipas</span></div></div><small>Presença das equipas indicada no website institucional da RMMJ. Conheça as nossas equipas na secção de presença.</small></div></div>
+  </section>
+
+  <section class="services section-pad" id="servicos" aria-labelledby="services-title">
+    <div class="section-label" rmReveal><span class="label-line"></span> 02 — SOLUÇÕES DE ENERGIA</div>
+    <div class="section-head" rmReveal><h2 id="services-title">Energia para a vida.<br><em>E para os negócios.</em></h2><p>Do primeiro esclarecimento ao acompanhamento comercial: estamos disponíveis para ajudar a encontrar o caminho certo.</p></div>
+    <div class="services-grid">
+      @for (service of offerings; track service.number) {
+      <article class="service-card" [class.expanded]="expandedService() === service.number" rmReveal>
+        <div class="service-head"><span>{{service.number}} / 04</span><span class="service-icon" aria-hidden="true">@switch(service.icon){@case('bolt'){↯}@case('flame'){◒}@case('home'){⌂}@case('building'){▥}}</span></div>
+        <h3>{{service.title}}</h3><p>{{service.description}}</p>
+        <button class="service-expand" type="button" [attr.aria-expanded]="expandedService() === service.number" [attr.aria-controls]="'service-more-' + service.number" (click)="toggleService(service.number)"><span>{{expandedService() === service.number ? 'Fechar detalhes' : 'Saber mais'}}</span><span aria-hidden="true">{{expandedService() === service.number ? '−' : '+'}}</span></button>
+        <div class="service-extra" [id]="'service-more-' + service.number" [attr.aria-hidden]="expandedService() !== service.number"><div class="service-extra-inner"><ul>@for(detail of service.details; track detail) {<li>{{detail}}</li>}</ul><button class="text-action" type="button" (click)="requestOffering(service)">Pedir informações ↗</button></div></div>
+      </article>
+      }
+    </div>
+    <p class="services-note">As condições comerciais são as apresentadas pela entidade comercializadora e devem ser confirmadas no momento da contratação.</p>
+  </section>
+
+  <section class="presence section-pad" id="presenca" aria-labelledby="presence-title">
+    <div class="section-label" rmReveal><span class="label-line"></span> A NOSSA PRESENÇA</div>
+    <div class="presence-heading" rmReveal><div><h2 id="presence-title">As nossas equipas.<br><em>As cidades onde estamos.</em></h2><p>A RMMJ indica presença de equipas em cinco cidades. A sede da empresa fica no Porto.</p></div><span class="presence-count"><strong>05</strong><small>CIDADES COM EQUIPAS</small></span></div>
+    <div class="presence-layout">
+      <div class="presence-regions" rmReveal>
+        @for (city of teamCities; track city; let idx = $index) {
+          <article class="presence-region" [class.presence-region-main]="idx === 0">
+            <span class="presence-place-index">0{{idx+1}}</span>
+            <div><span class="presence-place-type">{{idx === 0 ? 'SEDE & EQUIPA' : 'EQUIPA RMMJ'}}</span><h3>{{city}}</h3><p>{{idx === 0 ? 'Sede administrativa e equipa local.' : 'Presença comercial divulgada pela RMMJ.'}}</p></div>
+            <span class="presence-place-mark" aria-hidden="true">↗</span>
+          </article>
+        }
+      </div>
+      <aside class="presence-info" rmReveal>
+        <div class="presence-info-top"><span>01 / SEDE</span><span class="presence-info-symbol" aria-hidden="true">⌖</span></div>
+        <h3>Estamos no Porto.</h3>
+        <p>Rua Bartolomeu Dias, 9<br>Galeria Esquerda<br>4200-126 Porto</p>
+        <a class="presence-directions" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Bartolomeu+Dias+9+4200-126+Porto" target="_blank" rel="noopener noreferrer">Ver localização <span aria-hidden="true">↗</span></a>
+        <div class="presence-office-note"><span>SEDE / PORTO</span><p>É a partir do Porto que a RMMJ estabelece a sua ligação institucional. As equipas locais estão identificadas nos cartões ao lado.</p></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="audiences section-pad" id="clientes" aria-labelledby="audience-title"><div class="section-label" rmReveal><span class="label-line"></span> 03 — PARA QUEM</div><div class="section-head" rmReveal><h2 id="audience-title">Cada realidade pede<br><em>atenção diferente.</em></h2><p>Trabalhamos com quem gere uma casa e com quem gere um negócio. A abordagem começa sempre por ouvir.</p></div><div class="audience-grid"><article class="audience-card home-audience" rmReveal><div class="audience-top"><span>01 / PARTICULARES</span><span aria-hidden="true">↗</span></div><div class="audience-copy"><span class="outline-symbol" aria-hidden="true">⌂</span><h3>A energia<br>do seu dia a dia.</h3><p>Esclarecimentos e acompanhamento para as necessidades de eletricidade e gás da sua casa.</p><button type="button" (click)="requestSubject('Eletricidade e gás', 'Particular')">Falar sobre a minha casa <span aria-hidden="true">↗</span></button></div></article><article class="audience-card company-audience" rmReveal><div class="audience-top"><span>02 / EMPRESAS</span><span aria-hidden="true">↗</span></div><div class="audience-copy"><span class="outline-symbol" aria-hidden="true">▥</span><h3>Energia para<br>seguir em frente.</h3><p>Acompanhamento comercial dedicado às necessidades energéticas da sua atividade.</p><button type="button" (click)="requestSubject('Energia para empresas', 'Empresa')">Falar sobre a minha empresa <span aria-hidden="true">↗</span></button></div></article></div></section>
+
+  <section class="process section-pad" id="como-funciona" aria-labelledby="process-title"><div class="section-label inverse" rmReveal><span class="label-line"></span> 04 — A NOSSA FORMA DE TRABALHAR</div><div class="process-intro" rmReveal><h2 id="process-title">Simplificar começa<br>por <em>saber ouvir.</em></h2><p>Um processo próximo, sem complicações desnecessárias.</p></div><div class="process-grid">@for(step of steps; track step.number){<article class="process-step" rmReveal><div class="step-top"><span>{{step.number}}</span><span aria-hidden="true">↗</span></div><h3>{{step.title}}</h3><p>{{step.description}}</p></article>}</div></section>
+
+  <section class="careers careers-preview section-pad" id="carreiras" aria-labelledby="careers-title">
+    <div class="section-label" rmReveal><span class="label-line"></span> 05 — CARREIRAS RMMJ</div>
+    <div class="careers-preview-head" rmReveal><div><h2 id="careers-title">Uma carreira também<br><em>se faz de pessoas.</em></h2><p>Temos uma vaga comercial disponível no Porto. Se procuras outra função, também podes apresentar uma candidatura espontânea.</p></div><a class="btn btn-dark" routerLink="/recrutamento" fragment="oportunidades">Conhecer a vaga <span aria-hidden="true">↗</span></a></div>
+    <div class="careers-preview-grid" rmReveal>
+      <a class="careers-preview-card" routerLink="/recrutamento" fragment="oportunidades"><span>01 VAGA DISPONÍVEL · PORTO</span><strong>Comercial (M/F)</strong><p>Conhece as responsabilidades, o perfil procurado e apresenta a candidatura à vaga atual.</p><span class="careers-preview-link">Ver vaga disponível ↗</span></a>
+      <a class="careers-preview-card careers-preview-spontaneous" routerLink="/recrutamento" [queryParams]="{tipo: 'espontanea'}" fragment="candidatura"><span>SEM VAGA ESPECÍFICA</span><strong>Candidatura espontânea</strong><p>Não te identificas com a vaga comercial? Envia-nos o teu perfil para futuras oportunidades.</p><span class="careers-preview-link">Apresentar candidatura ↗</span></a>
+    </div>
+  </section>
+
+  <section class="faq-section section-pad" id="perguntas" aria-labelledby="faq-title"><div class="section-label" rmReveal><span class="label-line"></span> 06 — ESCLARECIMENTOS</div><div class="faq-layout"><div class="faq-intro" rmReveal><h2 id="faq-title">Perguntas claras.<br><em>Respostas próximas.</em></h2><p>Algumas respostas úteis antes de dar o próximo passo.</p></div><div class="faq-list" rmReveal>@for(faq of faqs; track faq.question; let i = $index){<article class="faq-item" [class.open]="expandedFaq() === i"><h3><button class="faq-toggle" type="button" [id]="'q-' + i" [attr.aria-expanded]="expandedFaq() === i" [attr.aria-controls]="'a-' + i" (click)="toggleFaq(i)"><span class="faq-number">0{{i+1}}</span><span>{{faq.question}}</span><span class="faq-plus" aria-hidden="true">+</span></button></h3><div class="faq-answer" [id]="'a-' + i" role="region" [attr.aria-labelledby]="'q-' + i" [attr.aria-hidden]="expandedFaq() !== i"><div class="faq-answer-inner"><p>{{faq.answer}}</p></div></div></article>}</div></div></section>
+
+  <section class="contact section-pad" id="contacto" aria-labelledby="contact-title"><div class="contact-layout"><div class="contact-info" rmReveal><div class="section-label inverse"><span class="label-line"></span> FALE CONNOSCO</div><h2 id="contact-title">Vamos falar<br>sobre <em>energia.</em></h2><p>Tem uma questão sobre eletricidade, gás ou soluções para empresas? Deixe-nos uma mensagem.</p><div class="contact-lines"><a href="tel:+351225402127"><span>TELEFONE</span><strong>22 540 2127</strong><small>Chamada para a rede fixa nacional</small></a><a href="mailto:geral@rmmj.pt"><span>EMAIL</span><strong>geral&#64;rmmj.pt</strong></a><div><span>MORADA</span><strong>Rua Bartolomeu Dias, 9<br>Galeria Esquerda, 4200-126 Porto</strong></div></div></div><div class="form-panel" rmReveal><div class="form-title"><span>01 / PEDIDO DE CONTACTO</span><span aria-hidden="true">↗</span></div><h3>O primeiro passo é simples.</h3><p>Preencha os dados abaixo e a nossa equipa entrará em contacto.</p><form [formGroup]="form" (ngSubmit)="send()" novalidate><div class="form-row"><label>Nome completo <span class="field-required">(obrigatório)</span><input formControlName="name" autocomplete="name" placeholder="O seu nome" [attr.aria-invalid]="form.controls.name.touched && form.controls.name.invalid"/></label><label>Telefone <span class="field-required">(obrigatório)</span><input formControlName="phone" autocomplete="tel" type="tel" placeholder="O seu contacto" [attr.aria-invalid]="form.controls.phone.touched && form.controls.phone.invalid"/></label></div><label>Email <span class="field-required">(obrigatório)</span><input type="email" formControlName="email" autocomplete="email" placeholder="exemplo@email.pt" [attr.aria-invalid]="form.controls.email.touched && form.controls.email.invalid"/></label><div class="form-row"><label>Perfil <span class="field-required">(obrigatório)</span><select formControlName="audience"><option value="Particular">Particular</option><option value="Empresa">Empresa</option></select></label><label>Assunto <span class="field-required">(obrigatório)</span><select formControlName="subject"><option value="Informações sobre eletricidade">Eletricidade</option><option value="Informações sobre gás natural">Gás natural</option><option value="Eletricidade e gás">Eletricidade e gás</option><option value="Energia para empresas">Energia para empresas</option><option value="Outro assunto">Outro assunto</option></select></label></div><label>Mensagem <span class="field-required">(obrigatório)</span><textarea formControlName="message" rows="4" placeholder="Em que podemos ajudar?" [attr.aria-invalid]="form.controls.message.touched && form.controls.message.invalid"></textarea></label><label class="honeypot" aria-hidden="true">Não preencher <input formControlName="botField" tabindex="-1" autocomplete="off"/></label><label class="consent"><input type="checkbox" formControlName="consent"/><span>Autorizo o tratamento dos dados para resposta a este pedido de contacto. <a href="mailto:geral@rmmj.pt?subject=Privacidade%20de%20dados%20RMMJ">Questões sobre privacidade</a>.</span></label>@if(form.invalid && form.touched){<p class="form-error" role="alert">Preencha todos os campos obrigatórios com dados válidos e aceite a declaração de privacidade.</p>}@if(sent()){<p class="form-success" role="status">Pedido enviado com sucesso. Obrigado pelo seu contacto.</p>}@if(failed()){<p class="form-error" role="alert">Não foi possível enviar o pedido. Tente novamente ou contacte-nos por telefone.</p>}<button class="btn btn-lime form-submit" type="submit" [disabled]="sending()">{{sending() ? 'A enviar...' : 'Enviar pedido'}} <span aria-hidden="true">↗</span></button><small class="form-footnote">O envio através da Netlify só fica funcional após a publicação e ativação dos formulários. Política de privacidade completa a confirmar antes da publicação.</small></form></div></div></section>
+  }
+</main>
+<footer class="footer"><div class="footer-main"><div class="footer-brand"><a [href]="recruitmentPage ? '/' : '#inicio'" class="wordmark footer-wordmark" aria-label="RMMJ — início"><span class="wordmark-symbol" aria-hidden="true"><i></i><i></i><i></i></span><span>RMMJ<small>ENERGIA &amp; PROXIMIDADE</small></span></a><p>A energia é feita de ligações.<br>Nós valorizamos cada uma.</p></div><div class="footer-links"><span class="footer-heading">EXPLORAR</span><a [href]="recruitmentPage ? '/#sobre' : '#sobre'">Quem somos</a><a [href]="recruitmentPage ? '/#servicos' : '#servicos'">Soluções</a><a [href]="recruitmentPage ? '/#clientes' : '#clientes'">Para quem</a><a [href]="recruitmentPage ? '/#presenca' : '#presenca'">Equipas e presença</a><a routerLink="/recrutamento">Recrutamento</a><a [href]="recruitmentPage ? '/#contacto' : '#contacto'">Contacto</a></div><div class="footer-address"><span class="footer-heading">ENCONTRE-NOS</span><address>Rua Bartolomeu Dias, 9<br>Galeria Esquerda<br>4200-126 Porto</address><a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Bartolomeu+Dias+9+4200-126+Porto" target="_blank" rel="noopener noreferrer" aria-label="Ver morada da RMMJ no Google Maps (abre numa nova janela)">Ver morada no mapa <span aria-hidden="true">↗</span></a><a href="tel:+351225402127">22 540 2127</a><a href="mailto:geral@rmmj.pt">geral&#64;rmmj.pt</a></div></div><div class="footer-bottom"><span>© {{year}} RMMJ. Todos os direitos reservados.</span><span>CONTEÚDOS COMERCIAIS SUJEITOS A CONFIRMAÇÃO.</span><a [href]="recruitmentPage ? '/' : '#inicio'">VOLTAR AO INÍCIO ↑</a></div></footer>

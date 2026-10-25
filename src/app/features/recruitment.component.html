@@ -1,0 +1,146 @@
+<div class="recruitment-page">
+  <section class="recruitment-hero recruitment-hero-jobs" aria-labelledby="recruitment-title">
+    <div class="recruitment-hero-inner">
+      <a class="back-home" href="/">← Voltar à RMMJ</a>
+      <span class="recruitment-kicker">RMMJ / CARREIRAS</span>
+      <h1 id="recruitment-title">O teu talento.<br>O nosso <span>próximo passo.</span></h1>
+      <p>Há muitas formas de fazer parte de uma equipa. Explora as oportunidades que temos em aberto ou apresenta-nos o teu percurso através de uma candidatura espontânea.</p>
+      <div class="recruitment-hero-actions">
+        <a class="btn btn-dark" href="#oportunidades">Explorar oportunidades <span aria-hidden="true">↓</span></a>
+        <button type="button" class="recruitment-alt-action" (click)="choose(spontaneous)">Candidatura espontânea <span aria-hidden="true">↗</span></button>
+      </div>
+      <div class="recruitment-hero-meta"><span>RMMJ / PESSOAS</span><span>TALENTO · EQUIPA · FUTURO</span></div>
+    </div>
+    <aside class="recruitment-hero-aside recruitment-culture-aside" aria-label="Pessoas e carreira na RMMJ">
+      <div class="recruitment-culture-top"><span>JUNTOS, MAIS LONGE</span><span>RMMJ / CARREIRAS</span></div>
+      <div class="recruitment-culture-center">
+        <div class="recruitment-culture-monogram" aria-hidden="true"><span>R</span><span>M</span><span>M</span><span>J</span></div>
+        <div class="recruitment-culture-message">
+          <span>O QUE NOS MOVE</span>
+          <h2>O futuro faz-se<br><em>com pessoas.</em></h2>
+          <p>Procuramos construir relações de confiança, com espaço para aprender, participar e evoluir.</p>
+        </div>
+      </div>
+      <div class="recruitment-culture-bottom"><span>CADA PERCURSO CONTA.</span><a href="#oportunidades">Conhecer percursos <span aria-hidden="true">↗</span></a></div>
+    </aside>
+  </section>
+
+  <section class="recruitment-opportunities section-pad" id="oportunidades" aria-labelledby="opportunities-title">
+    <div class="recruitment-heading" rmReveal>
+      <div>
+        <span class="recruitment-kicker">OPORTUNIDADES DE CARREIRA</span>
+        <h2 id="opportunities-title">@if (vacancies.length === 0) {Fica a par de <span>novas oportunidades.</span>} @else if (vacancies.length === 1) {Vaga <span>disponível.</span>} @else {Vagas <span>disponíveis.</span>}</h2>
+      </div>
+      <p>@if (vacancies.length === 0) {Não temos vagas anunciadas neste momento. Podes continuar a acompanhar esta página ou enviar uma candidatura espontânea.} @else {Consulta as funções que temos atualmente em aberto e escolhe a oportunidade que melhor se adequa ao teu perfil.}</p>
+    </div>
+    <div class="recruitment-vacancy-layout">
+      <div class="recruitment-vacancy-cards">
+        @for (vacancy of vacancies; track vacancy.id; let idx = $index) {
+          <article class="recruitment-card recruitment-job recruitment-vacancy-card" [class.recruitment-job-active]="selectedDetail() === vacancy.id" rmReveal>
+            <div class="recruitment-job-upper"><span class="recruitment-job-counter">VAGA {{idx + 1}} / {{vacancies.length}}</span><span class="recruitment-job-kind recruitment-job-open"><span class="recruitment-open-dot" aria-hidden="true"></span> DISPONÍVEL</span></div>
+            <div class="recruitment-job-glyph" aria-hidden="true">↗</div>
+            <h3>{{vacancy.title}}</h3>
+            <p class="recruitment-job-place"><span aria-hidden="true">⌖</span> {{vacancy.location}} <span class="job-sector">· {{vacancy.area}}</span></p>
+            <p class="recruitment-description">{{vacancy.description}}</p>
+            <div class="recruitment-tags">@for (attribute of vacancy.attributes; track attribute) {<span>{{attribute}}</span>}</div>
+            <div class="recruitment-job-footer">
+              <button type="button" class="recruitment-details-button" (click)="viewDetails(vacancy)" [attr.aria-expanded]="selectedDetail() === vacancy.id" aria-controls="job-detail">{{selectedDetail() === vacancy.id ? 'Ocultar detalhes' : 'Ver detalhes'}} <span aria-hidden="true">↗</span></button>
+              <button type="button" class="recruitment-apply-button" (click)="choose(vacancy)">Candidatar-me <span aria-hidden="true">→</span></button>
+            </div>
+          </article>
+        } @empty {
+          <div class="recruitment-no-openings" rmReveal>
+            <span class="recruitment-kicker">SEM VAGAS ANUNCIADAS</span>
+            <h3>O próximo passo pode começar contigo.</h3>
+            <p>Mesmo quando não existem oportunidades publicadas, podes enviar-nos uma candidatura espontânea.</p>
+            <button type="button" class="btn btn-dark" (click)="choose(spontaneous)">Apresentar candidatura <span aria-hidden="true">↗</span></button>
+          </div>
+        }
+      </div>
+      <aside class="recruitment-vacancy-info" rmReveal>
+        <span class="recruitment-kicker">ANTES DE TE CANDIDATARES</span>
+        <h3>Um processo<br>simples e direto.</h3>
+        <ol><li><strong>Explora as oportunidades</strong><span>Conhece as funções anunciadas ou opta pela candidatura espontânea.</span></li><li><strong>Prepara o teu CV</strong><span>Apresenta o teu percurso e as tuas competências.</span></li><li><strong>Envia a candidatura</strong><span>O formulário de recrutamento está separado dos pedidos comerciais.</span></li></ol>
+        <p>As condições específicas de cada função são esclarecidas durante o processo de recrutamento.</p>
+      </aside>
+    </div>
+    @if (detailPath(); as path) {
+      <section class="recruitment-job-details recruitment-vacancy-details" id="job-detail" aria-labelledby="job-detail-title">
+        <div class="recruitment-detail-head"><span class="recruitment-kicker">DETALHES DA VAGA / {{path.location}}</span><button type="button" (click)="closeDetails()" aria-label="Fechar detalhes da vaga">Fechar <span aria-hidden="true">×</span></button></div>
+        <h3 id="job-detail-title">{{path.title}} — {{path.location}}</h3>
+        <p class="recruitment-detail-lead">{{path.description}}</p>
+        <div class="recruitment-detail-columns">
+          <div><h4>O que vais fazer</h4><ul>@for (item of path.responsibilities ?? []; track item) {<li>{{item}}</li>}</ul></div>
+          <div><h4>O perfil que procuramos</h4><ul>@for (item of path.profile ?? []; track item) {<li>{{item}}</li>}</ul></div>
+          <div><h4>O que é divulgado</h4><ul>@for (item of path.benefits ?? []; track item) {<li>{{item}}</li>}</ul></div>
+        </div>
+        <p class="recruitment-detail-note">{{path.note}}</p>
+        <button type="button" class="btn btn-dark" (click)="choose(path)">Candidatar-me a esta vaga <span aria-hidden="true">↗</span></button>
+      </section>
+    }
+    <aside class="recruitment-spontaneous-card" rmReveal aria-labelledby="spontaneous-title">
+      <div class="recruitment-spontaneous-icon" aria-hidden="true">+</div>
+      <div class="recruitment-spontaneous-copy"><span>CANDIDATURAS FORA DAS VAGAS ABERTAS</span><h3 id="spontaneous-title">{{vacancies.length ? 'Não é esta a tua área?' : 'Queres apresentar o teu perfil?'}}</h3><p>Independentemente das vagas que estejam abertas, podes apresentar o teu currículo numa <strong>candidatura espontânea</strong> para futuras oportunidades.</p></div>
+      <button type="button" class="btn btn-dark" (click)="choose(spontaneous)">Candidatura espontânea <span aria-hidden="true">↗</span></button>
+    </aside>
+  </section>
+
+  <section class="recruitment-values section-pad" aria-labelledby="values-title">
+    <div rmReveal><span class="recruitment-kicker">A NOSSA CULTURA</span><h2 id="values-title">Pessoas primeiro.<br><span>Energia para crescer.</span></h2></div>
+    <div class="recruitment-values-grid">
+      <div rmReveal><span class="values-icon" aria-hidden="true">01</span><h3>Trabalho em equipa</h3><p>Acreditamos no acompanhamento mútuo e numa comunicação próxima.</p></div>
+      <div rmReveal><span class="values-icon" aria-hidden="true">02</span><h3>Aprendizagem</h3><p>Valorizamos a curiosidade, a preparação e a vontade de evoluir.</p></div>
+      <div rmReveal><span class="values-icon" aria-hidden="true">03</span><h3>Relações de confiança</h3><p>Trabalhamos com respeito, responsabilidade e atenção às pessoas.</p></div>
+    </div>
+  </section>
+
+  <section class="recruitment-apply section-pad" id="candidatura" aria-labelledby="apply-title">
+    <div class="recruitment-apply-intro" rmReveal>
+      <span class="recruitment-kicker">FORMULÁRIO DE RECRUTAMENTO</span>
+      <h2 id="apply-title">Agora é a tua<br><span>vez de participar.</span></h2>
+      <p>Escolhe uma das vagas abertas ou a candidatura espontânea. O teu pedido segue para o recrutamento, sem passar pelo formulário de contacto comercial.</p>
+      <div class="recruitment-selection"><span>O TEU PERCURSO</span><strong>{{form.controls.opportunity.value}}</strong><a href="#oportunidades">Ver oportunidades <span aria-hidden="true">↗</span></a></div>
+      <div class="recruitment-direct-contact">
+        <span>PREFERES ENVIAR O CV POR EMAIL?</span>
+        <a href="mailto:sandra.sousa@rmmj.pt?subject=Candidatura%20RMMJ">sandra.sousa&#64;rmmj.pt <span aria-hidden="true">↗</span></a>
+        <small>Contacto de recrutamento divulgado na página oficial. As oportunidades anunciadas podem sofrer alterações.</small>
+      </div>
+    </div>
+    <div class="recruitment-form-shell" rmReveal>
+      <div class="recruitment-form-head"><span>CANDIDATURA / RMMJ</span><span>01 — 02</span></div>
+      <h3>Enviar candidatura</h3><div class="recruitment-form-step"><span class="is-current">01 · Escolher candidatura</span><span class="is-current">02 · Enviar candidatura</span></div>
+      <p>Preenche os teus dados e descreve brevemente o teu interesse. Os campos indicados são obrigatórios.</p>
+      <form [formGroup]="form" (ngSubmit)="send()" novalidate>
+        <div class="form-row">
+          <label>Nome completo <span class="field-required">(obrigatório)</span><input formControlName="name" autocomplete="name" placeholder="Nome e apelido" [attr.aria-invalid]="form.controls.name.touched && form.controls.name.invalid"/></label>
+          <label>Telemóvel <span class="field-required">(obrigatório)</span><input formControlName="phone" autocomplete="tel" type="tel" placeholder="O teu contacto" [attr.aria-invalid]="form.controls.phone.touched && form.controls.phone.invalid"/></label>
+        </div>
+        <div class="form-row">
+          <label>Email <span class="field-required">(obrigatório)</span><input formControlName="email" autocomplete="email" type="email" placeholder="nome@exemplo.pt" [attr.aria-invalid]="form.controls.email.touched && form.controls.email.invalid"/></label>
+          <label>Localidade <span class="field-required">(obrigatório)</span><input formControlName="city" autocomplete="address-level2" placeholder="Onde resides?" [attr.aria-invalid]="form.controls.city.touched && form.controls.city.invalid"/></label>
+        </div>
+        <div class="form-row">
+          <label>Tipo de candidatura <span class="field-required">(obrigatório)</span>
+            <select formControlName="opportunity" (change)="syncChoice()">@for (vacancy of vacancies; track vacancy.id) {<option [value]="vacancy.label">{{vacancy.label}}</option>}<option value="Candidatura espontânea">Candidatura espontânea</option></select>
+          </label>
+          <label>Experiência profissional <span class="field-required">(obrigatório)</span>
+            <select formControlName="experience"><option value="Sem experiência">Ainda sem experiência</option><option value="Até 1 ano">Até 1 ano</option><option value="1 a 3 anos">1 a 3 anos</option><option value="Mais de 3 anos">Mais de 3 anos</option></select>
+          </label>
+        </div>
+        <label>O que te motiva a juntar-te à RMMJ? <span class="field-required">(obrigatório)</span>
+          <textarea formControlName="motivation" rows="5" placeholder="Conta-nos um pouco sobre o teu percurso e o que procuras..." [attr.aria-invalid]="form.controls.motivation.touched && form.controls.motivation.invalid"></textarea>
+        </label>
+        <label class="cv-field" for="candidate-cv"><span>Currículo (opcional) · PDF, DOC ou DOCX, até 5 MB</span><input id="candidate-cv" type="file" name="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" (change)="onCvChange($event)" [attr.aria-invalid]="!!cvError()" aria-describedby="cv-help"/></label>
+        <small id="cv-help" class="cv-help">Podes enviar o teu CV aqui ou diretamente por email. Não anexes documentos com dados desnecessários.</small>
+        @if (cvError()) { <p class="form-error" role="alert">{{cvError()}}</p> }
+        <label class="honeypot" aria-hidden="true">Não preencher <input formControlName="botField" tabindex="-1" autocomplete="off"/></label>
+        <label class="consent"><input type="checkbox" formControlName="consent"/><span>Autorizo a utilização dos meus dados e do currículo, caso anexado, exclusivamente para análise desta candidatura e eventual contacto. <a href="mailto:geral@rmmj.pt?subject=Privacidade%20recrutamento%20RMMJ">Questões sobre privacidade</a>.</span></label>
+        @if (form.invalid && form.touched) { <p class="form-error" role="alert">Preenche os campos obrigatórios corretamente e aceita a declaração de privacidade.</p> }
+        @if (sent()) { <p class="form-success" role="status">Candidatura enviada com sucesso. Obrigado pelo teu interesse na RMMJ.</p> }
+        @if (failed()) { <p class="form-error" role="alert">Não foi possível enviar a candidatura. Tenta novamente ou envia o teu CV por email.</p> }
+        <button class="btn btn-dark form-submit" type="submit" [disabled]="sending()">{{sending() ? 'A enviar candidatura...' : 'Enviar candidatura'}} <span aria-hidden="true">→</span></button>
+        <small class="form-footnote">A receção do formulário depende da publicação e configuração do Netlify Forms. A política de privacidade e os prazos de conservação das candidaturas devem ser aprovados antes da publicação.</small>
+      </form>
+    </div>
+  </section>
+</div>
