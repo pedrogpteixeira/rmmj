@@ -18,4 +18,4 @@ export const faqs = [
 ] as const;
 
 // Localidades das equipas conforme apresentação institucional da RMMJ; não equivalem a lojas próprias.
-export const teamCities = ['Porto', 'Coimbra', 'Leiria', 'Castelo Branco', 'Beja'] as const;
+export const teamCities = ['Coimbra', 'Leiria', 'Castelo Branco', 'Beja'] as const;

@@ -6,7 +6,7 @@
       <h1 id="recruitment-title">O teu talento.<br>O nosso <span>próximo passo.</span></h1>
       <p>Há muitas formas de fazer parte de uma equipa. Explora as oportunidades que temos em aberto ou apresenta-nos o teu percurso através de uma candidatura espontânea.</p>
       <div class="recruitment-hero-actions">
-        <a class="btn btn-dark" href="#oportunidades">Explorar oportunidades <span aria-hidden="true">↓</span></a>
+        <a class="btn btn-dark" routerLink="/recrutamento" fragment="oportunidades" queryParamsHandling="preserve">Explorar oportunidades <span aria-hidden="true">↓</span></a>
         <button type="button" class="recruitment-alt-action" (click)="choose(spontaneous)">Candidatura espontânea <span aria-hidden="true">↗</span></button>
       </div>
       <div class="recruitment-hero-meta"><span>RMMJ / PESSOAS</span><span>TALENTO · EQUIPA · FUTURO</span></div>
@@ -21,7 +21,7 @@
           <p>Procuramos construir relações de confiança, com espaço para aprender, participar e evoluir.</p>
         </div>
       </div>
-      <div class="recruitment-culture-bottom"><span>CADA PERCURSO CONTA.</span><a href="#oportunidades">Conhecer percursos <span aria-hidden="true">↗</span></a></div>
+      <div class="recruitment-culture-bottom"><span>CADA PERCURSO CONTA.</span><a routerLink="/recrutamento" fragment="oportunidades" queryParamsHandling="preserve">Conhecer percursos <span aria-hidden="true">↗</span></a></div>
     </aside>
   </section>
 
@@ -99,7 +99,7 @@
       <span class="recruitment-kicker">FORMULÁRIO DE RECRUTAMENTO</span>
       <h2 id="apply-title">Agora é a tua<br><span>vez de participar.</span></h2>
       <p>Escolhe uma das vagas abertas ou a candidatura espontânea. O teu pedido segue para o recrutamento, sem passar pelo formulário de contacto comercial.</p>
-      <div class="recruitment-selection"><span>O TEU PERCURSO</span><strong>{{form.controls.opportunity.value}}</strong><a href="#oportunidades">Ver oportunidades <span aria-hidden="true">↗</span></a></div>
+      <div class="recruitment-selection"><span>O TEU PERCURSO</span><strong>{{form.controls.opportunity.value}}</strong><a routerLink="/recrutamento" fragment="oportunidades" queryParamsHandling="preserve">Ver oportunidades <span aria-hidden="true">↗</span></a></div>
       <div class="recruitment-direct-contact">
         <span>PREFERES ENVIAR O CV POR EMAIL?</span>
         <a href="mailto:sandra.sousa@rmmj.pt?subject=Candidatura%20RMMJ">sandra.sousa&#64;rmmj.pt <span aria-hidden="true">↗</span></a>

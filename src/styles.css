@@ -206,7 +206,7 @@ h2 em,.hero h1 em { font-style:normal; }
 .presence-count{display:flex;flex-direction:column;min-width:130px;padding-bottom:10px;align-items:flex-end;gap:5px}
 .presence-count strong{font:800 clamp(60px,7vw,110px)/.94 var(--display);letter-spacing:-.09em;color:#1584b9}
 .presence-count small{font:800 10px/1.3 var(--sans);letter-spacing:.1em;color:#5b798c;white-space:nowrap}
-.presence-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.73fr);align-items:stretch;gap:22px}
+.presence-layout{display:grid;grid-template-columns:minmax(280px,.73fr) minmax(0,1.1fr);align-items:stretch;gap:22px}
 .presence-regions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .presence-region{position:relative;display:grid;grid-template-columns:29px 1fr auto;gap:12px;align-items:start;background:#fff;border:1px solid #d9e9f1;padding:26px 24px;min-height:151px;border-radius:9px;box-shadow:0 7px 19px #08486d08}
 .presence-region-main{grid-column:1/-1;background:#0b537f;color:#fff;border-color:#0b537f;min-height:156px}
@@ -308,7 +308,7 @@ h2 em,.hero h1 em { font-style:normal; }
  .hero-local{grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr)}
  .hero-local-copy{padding-inline:5%}
  .hero-local-panel{padding-inline:26px}
- .presence-layout{grid-template-columns:minmax(0,1.1fr) minmax(280px,.8fr)}
+ .presence-layout{grid-template-columns:minmax(260px,.8fr) minmax(0,1.1fr)}
  .recruitment-job-footer{grid-template-columns:1fr}
 }
 @media(max-width:800px){
@@ -320,7 +320,7 @@ h2 em,.hero h1 em { font-style:normal; }
  .partnership-strip{flex-wrap:wrap;gap:20px}
  .presence-heading{align-items:center}
  .presence-layout{grid-template-columns:1fr}
- .presence-info{min-height:390px}
+ .presence-info{min-height:0}
  .careers-preview-head{align-items:flex-start;flex-direction:column;gap:25px}
  .recruitment-hero-jobs .recruitment-hero-inner{padding:45px 6%}
  .recruitment-job-aside{min-height:340px;padding:35px 6%}

@@ -65,11 +65,18 @@ test('CSS is balanced and V1.6 recruitment rules are outside responsive media qu
   assert.doesNotMatch(styles, /@media\(max-width:580px\)\{\s*@media\(prefers-reduced-motion:reduce\)/);
 });
 
-test('presence highlights the five team cities and does not display the Endesa shop directory', () => {
+test('presence shows Maia headquarters on the left and four team cities on the right without repetition', () => {
   assert.match(html, /id="presenca"/);
-  for (const city of ['Porto', 'Coimbra', 'Leiria', 'Castelo Branco', 'Beja']) {
+  for (const city of ['Coimbra', 'Leiria', 'Castelo Branco', 'Beja']) {
     assert.ok(content.includes(`'${city}'`));
   }
+  assert.match(content, /teamCities = \['Coimbra', 'Leiria', 'Castelo Branco', 'Beja'\]/);
+  assert.doesNotMatch(content, /teamCities = \['Maia'/);
+  const section = html.slice(html.indexOf('id="presenca"'), html.indexOf('id="clientes"'));
+  assert.ok(section.indexOf('<aside class="presence-info"') < section.indexOf('<div class="presence-regions"'), 'headquarters should precede team cards');
+  assert.match(section, /<strong>05<\/strong><small>LOCALIDADES<\/small>/);
+  assert.match(section, /0\{\{idx\+2\}\}/);
+  assert.match(styles, /\.presence-layout\{display:grid;grid-template-columns:minmax\(280px,\.73fr\) minmax\(0,1\.1fr\)/);
   assert.match(html, /class="presence-regions"/);
   assert.doesNotMatch(html, /endesa\.pt\/contactos\/lojas|LOJAS ENDESA|class="presence-shops"/);
 });
@@ -132,4 +139,28 @@ test('vacancy cards scale to zero, one or many without altering the hero', () =>
 
 test('the footer map action has no hover underline', () => {
   assert.match(styles, /\.footer-address a\.footer-map-link:hover\{[^}]*text-decoration:none!important/);
+});
+
+
+test('headquarters appear only in the Maia aside, while Porto remains a recruitment location', () => {
+  const siteSeo = read('scripts/finalize-seo.mjs');
+  assert.match(html, /Sede na Maia e equipas em quatro outras cidades\./);
+  assert.doesNotMatch(html, /As equipas nas cinco cidades estão identificadas nos cartões ao lado/);
+  assert.match(html, /Estamos na Maia/);
+  assert.match(html, /SEDE \/ MAIA/);
+  assert.equal((html.match(/Av\. Visconde de Barreiros, 15/g) ?? []).length, 3);
+  assert.equal((html.match(/4470-157 Maia/g) ?? []).length, 3);
+  assert.equal((html.match(/query=Av\.\+Visconde\+de\+Barreiros%2C\+15%2C\+4470-157\+Maia/g) ?? []).length, 2);
+  assert.doesNotMatch(html, /Rua Bartolomeu Dias|4200-126|Sede da empresa fica no Porto|SEDE & EQUIPA/);
+  assert.match(content, /teamCities = \['Coimbra', 'Leiria', 'Castelo Branco', 'Beja'\]/);
+  assert.match(logic, /location: 'Porto'/);
+  assert.match(siteSeo, /streetAddress:'Av\. Visconde de Barreiros, 15',postalCode:'4470-157',addressLocality:'Maia'/);
+  assert.doesNotMatch(siteSeo, /Rua Bartolomeu Dias|4200-126/);
+});
+
+test('opportunity links always stay within the recruitment route despite document base href root', () => {
+  assert.equal((recruitment.match(/routerLink="\/recrutamento" fragment="oportunidades" queryParamsHandling="preserve"/g) ?? []).length, 3);
+  assert.doesNotMatch(recruitment, /href="#oportunidades"/);
+  assert.match(logic, /imports: \[ReactiveFormsModule, RevealDirective, RouterLink\]/);
+  assert.match(main, /anchorScrolling: 'enabled'/);
 });

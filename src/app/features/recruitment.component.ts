@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { inject } from '@angular/core';
 import { RevealDirective } from '../shared/reveal.directive';
 import {
@@ -25,7 +25,7 @@ interface RecruitmentPath {
 @Component({
   selector: 'rm-recruitment',
   standalone: true,
-  imports: [ReactiveFormsModule, RevealDirective],
+  imports: [ReactiveFormsModule, RevealDirective, RouterLink],
   templateUrl: './recruitment.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

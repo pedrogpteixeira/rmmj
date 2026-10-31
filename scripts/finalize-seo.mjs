@@ -60,7 +60,7 @@ export function renderPage(baseHtml, page, origin, indexable) {
       '@type':'Organization', '@id':origin+'/#organization', name:'RMMJ',
       url:origin+'/', logo:origin+'/rmmj-logo-compacto.png',
       email:'geral@rmmj.pt', telephone:'+351225402127',
-      address:{'@type':'PostalAddress',streetAddress:'Rua Bartolomeu Dias, 9, Galeria Esquerda',postalCode:'4200-126',addressLocality:'Porto',addressCountry:'PT'},
+      address:{'@type':'PostalAddress',streetAddress:'Av. Visconde de Barreiros, 15',postalCode:'4470-157',addressLocality:'Maia',addressCountry:'PT'},
     };
     const schema = {
       '@context':'https://schema.org','@graph':[
