@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "start": "node ./node_modules/@angular/cli/bin/ng.js serve",
-    "build": "node ./node_modules/@angular/cli/bin/ng.js build --configuration production && node scripts/verify-netlify.mjs",
+    "build": "node ./node_modules/@angular/cli/bin/ng.js build --configuration production && node scripts/finalize-seo.mjs && node scripts/verify-netlify.mjs",
     "check": "tsc --noEmit -p tsconfig.app.json",
-    "test": "node --experimental-strip-types --test scripts/*.test.mjs"
+    "test": "node --experimental-strip-types --test scripts/*.test.mjs",
+    "test:seo": "node --test scripts/seo.test.mjs"
   },
   "engines": {
     "node": "^22.22.3 || ^24.15.0 || ^26.0.0"

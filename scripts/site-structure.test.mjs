@@ -17,7 +17,7 @@ const shell = read('src/app/app-shell.component.ts');
 test('header presents official partner exactly once and page has no ribbon', () => {
   assert.doesNotMatch(html, /class="ribbon(?:\s|"|-)/);
   assert.doesNotMatch(styles, /\.ribbon|@keyframes\s+ribbonMove/);
-  assert.equal((html.match(/Parceiro oficial Endesa/g) ?? []).length, 1);
+  assert.equal((html.match(/<small>Parceiro oficial Endesa<\/small>/g) ?? []).length, 1);
   assert.doesNotMatch(html, /class="partnership-strip"/);
 });
 
@@ -25,11 +25,24 @@ test('home hero highlights official Endesa partnership without duplicating the t
   const hero = html.slice(html.indexOf('<section class="hero hero-local"'), html.indexOf('<section class="about section-pad"'));
   assert.match(hero, /class="hero-local-panel hero-values-panel hero-endesa-panel"/);
   assert.match(hero, /PARCEIRO OFICIAL ENDESA/);
-  assert.match(hero, /class="hero-endesa-name">Endesa/);
-  assert.match(hero, /PARCEIRO OFICIAL<\/span>/);
+  assert.match(hero, /class="hero-endesa-brandplate"/);
+  assert.match(hero, /src="\/rmmj-logo-parceiro-endesa\.png"/);
+  assert.doesNotMatch(hero, /class="hero-endesa-name"/);
   assert.match(hero, /href="#servicos"/);
   assert.doesNotMatch(hero, /class="local-city-list"/);
   assert.doesNotMatch(hero, /descontos|poupança garantida|fatura grátis/i);
+});
+
+test('uses the client-provided logos in the header, hero and footer', () => {
+  assert.equal((html.match(/src="\/rmmj-logo-compacto\.png"/g) ?? []).length, 2);
+  assert.equal((html.match(/src="\/rmmj-logo-parceiro-endesa\.png"/g) ?? []).length, 1);
+  assert.match(html, /class="wordmark wordmark-official"/);
+  assert.match(html, /class="footer-logo-link"/);
+  assert.doesNotMatch(html, /class="wordmark-symbol"/);
+  for (const asset of ['rmmj-logo-compacto.png', 'rmmj-logo-parceiro-endesa.png']) {
+    const png = readFileSync(new URL(`../public/${asset}`, import.meta.url));
+    assert.ok(png.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])), `${asset} must be a valid PNG`);
+  }
 });
 
 test('CSS is balanced and V1.6 recruitment rules are outside responsive media queries', () => {

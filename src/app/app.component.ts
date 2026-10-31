@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 import { offerings, steps, faqs, teamCities, type Offering } from './data/content';
 import { RevealDirective } from './shared/reveal.directive';
 import { encodeContactRequest, sendContactRequest } from './services/contact';
@@ -16,6 +17,9 @@ import { RecruitmentComponent } from './features/recruitment.component';
 })
 export class AppComponent {
   private readonly fb = new FormBuilder();
+  private readonly document = inject(DOCUMENT);
+  private readonly title = inject(Title);
+  private readonly meta = inject(Meta);
   readonly year = new Date().getFullYear();
   readonly recruitmentPage = inject(ActivatedRoute).snapshot.data['recruitment'] === true;
   readonly offerings = offerings;
@@ -40,11 +44,24 @@ export class AppComponent {
   });
 
   constructor() {
-    if (this.recruitmentPage && typeof document !== 'undefined') {
-      document.title = 'Recrutamento e candidaturas | RMMJ';
-      document.querySelector('meta[name="description"]')?.setAttribute(
-        'content', 'Explora oportunidades de recrutamento na RMMJ, conhece a equipa comercial no Porto e apresenta a tua candidatura espontânea.'
-      );
+    const title = this.recruitmentPage
+      ? 'Recrutamento e candidaturas | RMMJ'
+      : 'RMMJ — Parceiro oficial Endesa | Eletricidade e gás';
+    const description = this.recruitmentPage
+      ? 'Conhece as oportunidades de emprego na RMMJ, incluindo a área comercial no Porto, e apresenta a tua candidatura espontânea.'
+      : 'RMMJ, parceiro oficial Endesa. Soluções de eletricidade e gás para particulares e empresas, com equipas no Porto, Coimbra, Leiria, Castelo Branco e Beja.';
+    this.title.setTitle(title);
+    this.meta.updateTag({ name: 'description', content: description });
+    this.meta.updateTag({ property: 'og:title', content: title });
+    this.meta.updateTag({ property: 'og:description', content: description });
+    this.meta.updateTag({ name: 'twitter:title', content: title });
+    this.meta.updateTag({ name: 'twitter:description', content: description });
+    // Respeita a origem definida no deploy: não inventa canónicas em previews.
+    const canonical = this.document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (canonical) {
+      const target = new URL(this.recruitmentPage ? '/recrutamento/' : '/', canonical.href).href;
+      canonical.href = target;
+      this.meta.updateTag({ property: 'og:url', content: target });
     }
   }
 

@@ -504,3 +504,303 @@ rm-root,rm-site-page{display:block;min-height:100%}
   .hero-endesa-topics{gap:7px}
   .hero-endesa-topics span{font-size:10px;padding:8px 10px}
 }
+
+
+/* V1.8 · Identidade oficial RMMJ: ficheiros fornecidos pelo cliente.
+   Sem reconstruir o desenho do logótipo com letras ou elementos CSS. */
+.wordmark-official{display:inline-flex;align-items:center;flex:0 0 auto;min-width:0;line-height:1}
+.wordmark-official-content{display:flex!important;flex-direction:column;align-items:flex-start;min-width:0;gap:3px}
+.wordmark-official-content img{display:block;width:clamp(132px,9.4vw,166px);max-width:100%;height:auto;object-fit:contain}
+.wordmark-official-content small{display:block!important;margin:0 0 0 2px!important;font:750 9px/1.2 var(--sans)!important;letter-spacing:.015em!important;color:#367a9d!important}
+.wordmark-official:focus-visible,.footer-logo-link:focus-visible{outline:3px solid #1887bf;outline-offset:5px;border-radius:5px}
+.hero-endesa-brandplate{display:block;position:relative;max-width:560px;width:100%;min-width:0;padding:clamp(16px,2vw,26px);border-radius:9px;background:#fff;border:1px solid #e3ecf0;box-shadow:0 22px 50px rgba(1,18,36,.16);margin-bottom:clamp(25px,3vw,40px)}
+.hero-endesa-brandplate img{display:block;width:100%;height:auto;object-fit:contain}
+.footer-logo-link{display:inline-flex;align-items:center;padding:10px 14px;background:#fff;border-radius:7px;width:fit-content;max-width:100%;text-decoration:none;transition:box-shadow .2s ease}
+.footer-logo-link:hover{box-shadow:0 0 0 2px rgba(156,218,241,.45)}
+.footer-logo-link img{display:block;width:clamp(145px,12vw,182px);max-width:100%;height:auto;object-fit:contain}
+@media(max-width:930px){.wordmark-official-content img{width:150px}}
+@media(max-width:480px){.wordmark-official-content img{width:132px}.wordmark-official-content small{font-size:8px!important}.hero-endesa-brandplate{padding:15px;border-radius:7px}.footer-logo-link img{width:150px}}
+@media(prefers-reduced-motion:reduce){.footer-logo-link{transition:none}}
+
+/* V1.9 — Sistema tipográfico RMMJ
+   Escala fluida, leitura consistente e densidade vertical equilibrada.
+   Mantém logótipos, cores, conteúdos e funcionalidades V1.8. */
+:root{
+  --type-caption:clamp(11px,.68vw,12px);
+  --type-small:clamp(12px,.76vw,13px);
+  --type-copy:clamp(14px,.98vw,16px);
+  --type-lead:clamp(17px,1.24vw,20px);
+  --type-h1:clamp(44px,4vw,72px);
+  --type-h2:clamp(36px,3.25vw,58px);
+  --type-h3:clamp(23px,1.7vw,30px);
+  --section-space:clamp(78px,6.3vw,112px);
+}
+body{font-size:16px;line-height:1.65}
+.section-pad{padding-block:var(--section-space)}
+.section-label,.recruitment-page .recruitment-kicker{font-size:var(--type-caption);line-height:1.5;letter-spacing:.08em}
+.section-label{gap:12px}
+h2{font-size:var(--type-h2);line-height:1.14;letter-spacing:-.055em}
+.section-head{margin:24px 0 38px;gap:5%}
+.section-head h2{max-width:830px}
+.section-head>p{font-size:var(--type-copy);line-height:1.75;max-width:380px}
+.btn,.header-contact,.nav>a{font-size:13px;line-height:1.4}
+.btn{padding:16px 21px;gap:20px}
+.header-contact{padding:14px 18px;gap:19px}
+.quiet-link,.text-action,.presence-directions,.recruitment-alt-action{font-size:13px;line-height:1.5}
+
+/* Início — duas colunas equilibradas, sem títulos demasiado grandes. */
+.hero-local-copy{padding-block:32px}
+.hero-local-main{padding:clamp(42px,4.4vw,76px) 0}
+.hero-local h1{font-size:var(--type-h1);line-height:1.11;letter-spacing:-.063em;margin:18px 0 23px}
+.hero-local-main>p{font-size:var(--type-copy);line-height:1.78;max-width:550px;margin-bottom:27px}
+.hero-local-label,.super-label,.hero-endesa-context{font-size:var(--type-caption);line-height:1.45}
+.hero-local-label{letter-spacing:.055em}
+.hero-local-facts{padding-top:20px;gap:12px}
+.hero-local-facts strong{font-size:clamp(27px,2.15vw,38px);line-height:1.1}
+.hero-local-facts span{font-size:var(--type-small);line-height:1.5}
+.hero-local-panel{min-height:650px}
+.local-panel-top,.local-panel-bottom{font-size:var(--type-caption);letter-spacing:.07em;line-height:1.5}
+.hero-endesa-content{padding-block:clamp(24px,3vw,50px)}
+.hero-endesa-brandplate{max-width:510px;margin-bottom:clamp(23px,2.4vw,35px)}
+.hero-endesa-content h2{font-size:clamp(30px,2.7vw,46px);line-height:1.2;letter-spacing:-.043em;margin-bottom:14px}
+.hero-endesa-content>p{font-size:var(--type-copy);line-height:1.75;margin-bottom:20px}
+.hero-endesa-topics span{font-size:var(--type-small);padding:8px 11px}
+
+/* Quem somos — subtítulos e dados sem saltos abruptos. */
+.about-layout{gap:clamp(32px,6vw,100px);margin-top:35px}
+.about-detail{padding-top:8px}
+.about-detail .lead{font-size:var(--type-lead);line-height:1.55;letter-spacing:-.025em;margin-bottom:21px}
+.about-detail p{font-size:var(--type-copy);line-height:1.8}
+.about-facts{gap:34px;padding-top:23px;margin-top:25px}
+.about-facts strong{font-size:clamp(30px,2.5vw,43px)}
+.about-facts span,.about-detail small{font-size:var(--type-small);line-height:1.65}
+.about-highlight{min-height:150px;padding:22px}
+.about-highlight span{font-size:var(--type-caption)}
+.about-highlight strong{font-size:clamp(22px,1.7vw,29px)}
+
+/* Soluções — cartões com maior leitura e menos espaço vazio. */
+.service-card{padding:clamp(23px,1.8vw,32px);min-height:365px}
+.service-head{font-size:var(--type-caption);margin-bottom:clamp(30px,3vw,58px)}
+.service-icon{font-size:37px}
+.service-card h3{font-size:clamp(23px,1.65vw,29px);line-height:1.22;letter-spacing:-.043em}
+.service-card>p{font-size:clamp(13.5px,.9vw,15px);line-height:1.75;max-width:none}
+.service-expand{font-size:13px;padding-top:17px}
+.service-extra ul{font-size:13px;line-height:1.7}
+.services-note{font-size:var(--type-small);margin-top:22px}
+
+/* Presença — preservar protagonismo das cidades, sem microtexto. */
+.presence-heading{margin:24px 0 34px}
+.presence-heading h2{font-size:var(--type-h2);line-height:1.14;margin-bottom:14px}
+.presence-heading p{font-size:var(--type-copy);line-height:1.75}
+.presence-count strong{font-size:clamp(48px,4.25vw,74px);line-height:1}
+.presence-count small,.presence-place-type,.presence-info-top,.presence-office-note>span{font-size:var(--type-caption)}
+.presence-region{min-height:135px;padding:23px 24px}
+.presence-region-main{min-height:145px}
+.presence-place-index{font-size:var(--type-small)}
+.presence-place-type{margin-bottom:7px;letter-spacing:.07em}
+.presence-region h3{font-size:clamp(22px,1.65vw,29px);line-height:1.2;margin-bottom:7px}
+.presence-region p{font-size:var(--type-small);line-height:1.65}
+.presence-info{padding:clamp(25px,2.6vw,40px)}
+.presence-info h3{font-size:clamp(26px,2.1vw,35px);margin:26px 0 14px}
+.presence-info>p{font-size:var(--type-copy);line-height:1.7}
+.presence-office-note{padding-top:21px}
+.presence-office-note p{font-size:var(--type-small);line-height:1.7}
+
+/* Particulares, empresas e forma de trabalhar. */
+.audience-card{min-height:clamp(410px,30vw,490px);padding:clamp(27px,2.3vw,37px)}
+.audience-card h3{font-size:clamp(27px,2.45vw,39px);line-height:1.18;letter-spacing:-.05em}
+.audience-card p{font-size:var(--type-copy);line-height:1.75}
+.audience-top{font-size:var(--type-caption)}
+.audience-card button{font-size:13px}
+.process-intro{margin:27px 0 37px;gap:35px}
+.process-intro>p{font-size:var(--type-copy);line-height:1.75}
+.process-step{min-height:235px;padding:28px}
+.process-step h3{font-size:clamp(23px,1.7vw,29px);letter-spacing:-.04em;margin-top:18px}
+.process-step p{font-size:var(--type-copy);line-height:1.7}
+
+/* Carreiras na homepage: equilíbrio entre chamada e cartões. */
+.careers-preview-head{margin:24px 0 34px;gap:35px}
+.careers-preview-head h2{margin-bottom:13px}
+.careers-preview-head p{font-size:var(--type-copy);line-height:1.75}
+.careers-preview-card{min-height:230px;padding:27px 29px}
+.careers-preview-card>span:first-child{font-size:var(--type-caption)}
+.careers-preview-card strong{font-size:clamp(24px,2vw,33px);line-height:1.23;margin:20px 0 11px}
+.careers-preview-card p{font-size:var(--type-copy);line-height:1.7;margin-bottom:24px}
+.careers-preview-link{font-size:13px}
+
+/* Esclarecimentos: perguntas e respostas próximas do corpo de texto. */
+.faq-layout{gap:clamp(36px,5vw,82px)}
+.faq-intro h2{font-size:var(--type-h2)}
+.faq-intro>p{font-size:var(--type-copy);line-height:1.7}
+.faq-toggle{font-size:clamp(14px,1vw,16px);line-height:1.55;gap:15px;padding:22px 0}
+.faq-number{font-size:var(--type-caption)}
+.faq-answer p{font-size:var(--type-copy);line-height:1.75;padding-bottom:22px}
+
+/* Contactos e formulários: campos e notas confortáveis de ler. */
+.contact-layout{gap:5%}
+.contact-info h2{font-size:var(--type-h2);margin:31px 0 19px}
+.contact-info>p{font-size:var(--type-copy);line-height:1.75}
+.contact-lines{gap:22px}
+.contact-lines span{font-size:var(--type-caption)}
+.contact-lines strong{font-size:clamp(14px,1vw,17px);line-height:1.6}
+.contact-lines small{font-size:var(--type-small)}
+.form-panel{padding:clamp(28px,3vw,48px)}
+.form-title{font-size:var(--type-caption)}
+.form-panel h3{font-size:clamp(25px,2.25vw,35px);line-height:1.2;margin:21px 0 9px}
+.form-panel>p{font-size:var(--type-copy);line-height:1.75}
+.form-panel form{gap:17px}
+.form-panel label{font-size:13px;line-height:1.55}
+.form-panel input:not([type=checkbox]),.form-panel select,.form-panel textarea{font-size:14px;line-height:1.5;min-height:48px}
+.field-required{font-size:12px!important}
+.form-panel .consent,.recruitment-form-shell .consent{font-size:13px;line-height:1.65}
+.form-footnote,.recruitment-form-shell .form-footnote{font-size:12px;line-height:1.65}
+.form-success,.form-error{font-size:13px}
+
+/* Footer — leitura sem sacrificar a hierarquia institucional. */
+.footer{padding-top:clamp(62px,5.3vw,88px)}
+.footer-main{gap:clamp(30px,6vw,95px)}
+.footer-brand>p{font-size:var(--type-copy);line-height:1.75;margin:25px 0 17px}
+.footer-heading,.footer-partner{font-size:var(--type-caption)}
+.footer-links a,.footer-address a,.footer-address address{font-size:13px;line-height:1.75}
+.footer-address a.footer-map-link{font-size:13px!important}
+.footer-bottom{font-size:var(--type-caption);line-height:1.65}
+.wordmark-official-content small{font-size:10px!important}
+
+/* Página de recrutamento — mesma escala visual da homepage. */
+.recruitment-hero-jobs{min-height:clamp(570px,70svh,710px)}
+.recruitment-hero-jobs h1{font-size:clamp(41px,3.85vw,68px);line-height:1.13;letter-spacing:-.055em}
+.recruitment-hero-inner>p{font-size:var(--type-copy);line-height:1.75}
+.recruitment-hero-jobs .back-home{margin-bottom:clamp(25px,3vw,45px);font-size:13px}
+.recruitment-hero-meta{font-size:var(--type-caption);padding-top:29px}
+.recruitment-hero-actions{gap:22px}
+.recruitment-culture-top,.recruitment-culture-bottom{font-size:var(--type-caption)}
+.recruitment-culture-monogram{margin-bottom:clamp(19px,2vw,30px);padding-bottom:clamp(17px,2vw,28px)}
+.recruitment-culture-monogram span{font-size:clamp(34px,3.55vw,61px)}
+.recruitment-culture-message>span{font-size:var(--type-caption)}
+.recruitment-culture-message h2{font-size:clamp(29px,2.6vw,43px);line-height:1.2;letter-spacing:-.04em}
+.recruitment-culture-message p{font-size:var(--type-copy);line-height:1.75}
+.recruitment-heading{margin-bottom:33px;gap:40px}
+.recruitment-heading h2,.recruitment-values h2,.recruitment-apply h2{font-size:var(--type-h2);line-height:1.15}
+.recruitment-heading>p{font-size:var(--type-copy);line-height:1.75}
+.recruitment-vacancy-card{min-height:425px}
+.recruitment-job{padding:clamp(27px,2.8vw,40px)}
+.recruitment-job-upper{font-size:var(--type-caption);margin-bottom:21px}
+.recruitment-job h3{font-size:clamp(26px,2.25vw,36px);line-height:1.2}
+.recruitment-job-place,.recruitment-job .recruitment-description{font-size:var(--type-copy);line-height:1.75}
+.recruitment-tags span{font-size:var(--type-small)}
+.recruitment-job-footer>button{font-size:13px}
+.recruitment-vacancy-info{padding:clamp(25px,2.5vw,40px)}
+.recruitment-vacancy-info h3{font-size:clamp(25px,2.1vw,34px);line-height:1.2;margin:16px 0 22px}
+.recruitment-vacancy-info li strong{font-size:14px}
+.recruitment-vacancy-info li span{font-size:13px;line-height:1.65}
+.recruitment-vacancy-info>p{font-size:12px;line-height:1.7}
+.recruitment-detail-grid h3,.recruitment-vacancy-details>h3{font-size:clamp(25px,2.5vw,37px)}
+.recruitment-detail-grid p,.recruitment-detail-lead{font-size:var(--type-copy);line-height:1.75}
+.recruitment-detail-columns h4,.recruitment-detail-side h4{font-size:18px}
+.recruitment-detail-columns ul,.recruitment-detail-side ul{font-size:14px;line-height:1.7}
+.recruitment-detail-columns{gap:22px;margin-top:27px}
+.recruitment-vacancy-details .recruitment-detail-note,.recruitment-detail-grid .recruitment-detail-note{font-size:12px}
+.recruitment-spontaneous-copy>span,.recruitment-selection>span{font-size:var(--type-caption)}
+.recruitment-spontaneous-copy h3{font-size:clamp(25px,2vw,33px)}
+.recruitment-spontaneous-copy p{font-size:var(--type-copy);line-height:1.7}
+.recruitment-no-openings h3{font-size:clamp(24px,2vw,33px)}
+.recruitment-no-openings p{font-size:var(--type-copy)}
+.recruitment-values-grid{margin-top:35px;gap:18px}
+.recruitment-values-grid>div{padding:26px}
+.recruitment-values-grid h3{font-size:clamp(20px,1.45vw,24px)}
+.recruitment-values-grid p{font-size:var(--type-copy);line-height:1.7}
+.recruitment-apply-intro>p{font-size:var(--type-copy);line-height:1.75;margin:19px 0 32px}
+.recruitment-selection{padding:22px;margin-bottom:22px}
+.recruitment-selection>strong{font-size:clamp(18px,1.45vw,24px)}
+.recruitment-direct-contact>span{font-size:var(--type-caption)}
+.recruitment-direct-contact>a{font-size:clamp(14px,1.2vw,18px)}
+.recruitment-direct-contact>small{font-size:var(--type-small)}
+.recruitment-form-shell{padding:clamp(27px,3vw,45px)}
+.recruitment-form-head{font-size:var(--type-caption)}
+.recruitment-form-shell h3{font-size:clamp(24px,2.1vw,34px)}
+.recruitment-form-shell>p{font-size:var(--type-copy);line-height:1.7}
+.recruitment-form-shell label:not(.consent):not(.honeypot){font-size:13px}
+.recruitment-form-shell input:not([type=checkbox]):not([type=file]),.recruitment-form-shell select,.recruitment-form-shell textarea{font-size:14px;min-height:48px}
+.recruitment-form-shell input[type=file]{font-size:13px}
+.recruitment-form-shell .cv-help{font-size:12px;line-height:1.65}
+.recruitment-form-step span{font-size:var(--type-caption)}
+
+/* Ajustes responsivos: proporções consistentes sem títulos gigantes ou microtexto. */
+@media(max-width:1240px){
+  :root{--type-h1:clamp(42px,4.4vw,61px);--type-h2:clamp(35px,3.65vw,51px)}
+  .hero-local h1{font-size:var(--type-h1)}
+  .hero-local-facts span{font-size:12px}
+  .services-grid .service-card{min-height:330px}
+}
+@media(max-width:930px){
+  .section-pad{padding-block:clamp(72px,7vw,92px)}
+  .nav>a{font-size:14px}
+  .service-head{margin-bottom:35px}
+  .hero-local-panel{min-height:570px}
+}
+@media(max-width:800px){
+  :root{--type-h2:clamp(34px,5.8vw,48px)}
+  .hero-local-copy{min-height:calc(100svh - 78px);padding-block:32px}
+  .hero-local-main{padding:clamp(35px,5vw,60px) 0}
+  .hero-local h1{font-size:clamp(43px,7vw,66px)}
+  .hero-local-panel{min-height:0}
+  .hero-endesa-content{padding-block:38px}
+  .recruitment-hero-jobs{min-height:0}
+  .recruitment-hero-jobs h1{font-size:clamp(40px,6.6vw,59px)}
+  .recruitment-culture-aside{min-height:390px}
+  .recruitment-culture-message h2{font-size:clamp(31px,5.7vw,42px)}
+  .recruitment-apply{gap:35px}
+}
+@media(max-width:580px){
+  :root{--type-h1:clamp(38px,9.2vw,51px);--type-h2:clamp(33px,8vw,42px)}
+  .section-pad{padding:68px 6%}
+  .section-head{margin:21px 0 28px}
+  .section-head>p{margin-top:18px}
+  .hero-local-copy{padding-block:26px}
+  .hero-local-main{padding:40px 0}
+  .hero-local h1{font-size:var(--type-h1);line-height:1.14;letter-spacing:-.06em}
+  .hero-local-facts{gap:9px}
+  .hero-local-facts strong{font-size:27px}
+  .hero-local-facts span{font-size:12px}
+  .hero-local-label{font-size:11px}
+  .hero-endesa-content h2{font-size:clamp(29px,7.1vw,37px)}
+  .hero-local-panel{padding:27px 6%}
+  .local-panel-top,.local-panel-bottom{font-size:11px}
+  .about-layout{margin-top:26px;gap:24px}
+  .about-facts strong{font-size:32px}
+  .service-card,.services-grid .service-card{min-height:0;padding:27px}
+  .service-head{margin-bottom:29px}
+  .audience-card{min-height:370px;padding:27px}
+  .audience-card h3{font-size:clamp(27px,7vw,34px)}
+  .process-step{min-height:0;padding:27px}
+  .careers-preview-card{min-height:210px;padding:26px}
+  .careers-preview-card strong{font-size:27px}
+  .presence-count strong{font-size:57px}
+  .presence-heading{margin-bottom:27px}
+  .presence-region{min-height:0;padding:23px 21px}
+  .faq-layout{gap:25px}
+  .faq-toggle{font-size:14px;padding:20px 0}
+  .faq-answer p{padding-left:40px}
+  .contact-info h2{margin-top:25px}
+  .form-panel,.recruitment-form-shell{padding:26px 21px}
+  .footer{padding-top:60px}
+  .recruitment-hero-jobs .recruitment-hero-inner{padding:40px 6% 46px}
+  .recruitment-hero-jobs h1{font-size:clamp(38px,9vw,49px)}
+  .recruitment-culture-aside{min-height:355px;padding:28px 6%}
+  .recruitment-culture-monogram span{font-size:clamp(31px,8vw,45px)}
+  .recruitment-culture-message h2{font-size:clamp(29px,7vw,37px)}
+  .recruitment-heading{margin-bottom:25px}
+  .recruitment-vacancy-card{min-height:0}
+  .recruitment-job{padding:26px}
+  .recruitment-job h3{font-size:29px}
+  .recruitment-vacancy-info{padding:27px}
+  .recruitment-values-grid{margin-top:26px}
+  .recruitment-detail-columns{gap:22px}
+}
+@media(prefers-reduced-motion:reduce){
+  .service-card,.recruitment-job,.careers-preview-card{transition:none}
+}
+
+/* SEO / Acessibilidade: legibilidade dos textos identificados no Lighthouse em produção. */
+.hero-local-label>span:last-child{color:#445f71}
+.services-note{color:#465f6c}
